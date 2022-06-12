@@ -1,3 +1,5 @@
+// https://www.codingninjas.com/codestudio/problems/first-and-last-position-of-an-element-in-sorted-array_1082549
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -56,4 +58,10 @@ pair<int, int> firstAndLastPosition(vector<int> &arr, int n, int k)
   }
 
   return make_pair(leftMostIndex, rightMostIndex);
+}
+
+int main(int argc, char const *argv[])
+{
+  /* code */
+  return 0;
 }
