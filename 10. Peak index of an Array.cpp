@@ -36,13 +36,11 @@ int peakIndexInMountainArray(vector<int> &arr)
 int peakIndexInMountainArray(vector<int> &arr)
 {
   // Why were we start from 0 and end = arr.length - 1? because we know our answer will never be one of those.
-  int start = 1, end = arr.size() - 2, mid;
+  int start = 1, end = arr.size() - 2, mid = start + (end - start) / 2;
   bool greaterThanPrevious = false, greaterThanNext = false;
 
   while (start <= mid and mid <= end)
   {
-    mid = start + (end - start) / 2;
-
     greaterThanPrevious = arr.at(mid - 1) < arr.at(mid);
     greaterThanNext = arr.at(mid + 1) < arr.at(mid);
 
@@ -52,6 +50,8 @@ int peakIndexInMountainArray(vector<int> &arr)
       start = mid + 1;
     else
       end = mid - 1;
+
+    mid = start + (end - start) / 2;
   }
 
   return -1;
