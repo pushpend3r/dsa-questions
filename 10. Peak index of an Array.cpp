@@ -57,6 +57,24 @@ int peakIndexInMountainArray(vector<int> &arr)
   return -1;
 }
 
+// Approach 3 - love babber's
+int peakIndexInMountainArray(vector<int> &arr)
+{
+  int start = 1, end = arr.size() - 2, mid = start + (end - start) / 2;
+
+  while (start < end)
+  {
+    if (arr.at(mid) < arr.at(mid + 1))
+      start = mid + 1;
+    else
+      end = mid;
+
+    mid = start + (end - start) / 2;
+  }
+
+  return start;
+}
+
 int main(int argc, char const *argv[])
 {
   vector<int> arr = {3, 5, 3, 2, 0};
