@@ -8,30 +8,19 @@ bool uniqueOccurences(vector<int> &arr)
 {
   int n = arr.size() - 1;
   int occurences[2001] = {0};
+
   for (int i = 0; i <= n; ++i)
-  {
-    if (arr[i] < 0)
-    {
-      ++occurences[1000 - arr[i]];
-    }
-    else
-    {
-      ++occurences[arr[i]];
-    }
-  }
+    ++occurences[arr[i] + 1000];
 
   sort(occurences, occurences + 2001);
 
   for (int i = 2000; i > 0; --i)
   {
     if (occurences[i] == 0)
-    {
       break;
-    }
-    else if (occurences[i] == occurences[i - 1])
-    {
+
+    if (occurences[i] == occurences[i - 1])
       return false;
-    }
   }
 
   return true;

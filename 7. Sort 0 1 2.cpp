@@ -16,25 +16,22 @@ void sort012(int *arr, int n)
       start++;
     else if (arr[end] == 2)
       end--;
+    else if (arr[start] == 1 and arr[end] == 1)
+    {
+      int tempIndex = start;
+      do
+      {
+        tempIndex++;
+      } while (tempIndex < end and arr[tempIndex] == 1);
+      if (tempIndex == end)
+      {
+        start = end;
+      }
+      swap(arr[tempIndex], arr[start]);
+    }
     else
     {
-      if (arr[start] == 1 and arr[end] == 1)
-      {
-        int tempIndex = start;
-        do
-        {
-          tempIndex++;
-        } while (tempIndex < end and arr[tempIndex] == 1);
-        if (tempIndex == end)
-        {
-          start++;
-        }
-        swap(arr[tempIndex], arr[start]);
-      }
-      else
-      {
-        swap(arr[start], arr[end]);
-      }
+      swap(arr[start], arr[end]);
     }
   }
 }
