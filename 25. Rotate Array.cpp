@@ -26,9 +26,7 @@ void rotate(vector<int>& nums, int k) {
 
   for (int rotation = 1; rotation <= k; ++rotation) {
     int temp = nums.at(0);
-
     for (int i = n - 1; i > 0; --i) nums.at((i + 1) % n) = nums.at(i);
-
     nums.at(1 % n) = temp;
   }
 }

@@ -5,26 +5,21 @@
 using namespace std;
 
 // gives the integer part
-int sqrtUsingBinarySearch(long long int N)
-{
+int sqrtUsingBinarySearch(long long int N) {
   long long int start = 0, end = N, mid;
   unsigned long long int tempSqrt;
   int ans = -1;
 
-  while (start <= end)
-  {
+  while (start <= end) {
     mid = start + (end - start) / 2;
     tempSqrt = mid * mid;
 
-    if (tempSqrt == N)
-      return mid;
+    if (tempSqrt == N) return mid;
 
-    if (tempSqrt < N)
-    {
+    if (tempSqrt < N) {
       ans = mid;
       start = mid + 1;
-    }
-    else
+    } else
       end = mid - 1;
   }
 
@@ -32,65 +27,55 @@ int sqrtUsingBinarySearch(long long int N)
 }
 
 // Love Babber's Approach
-double sqrtUsingBinarySearchWithPrecision(long long int N, int precision)
-{
+double sqrtUsingBinarySearchWithPrecision(long long int N, int precision) {
   double sqrtRoot = sqrtUsingBinarySearch(N);
   double factor = 1;
 
-  for (int i = 0; i < precision; ++i)
-  {
+  for (int i = 0; i < precision; ++i) {
     factor = factor / 10;
-    for (double j = sqrtRoot; j * j < N; j = j + factor)
-      sqrtRoot = j;
+    for (double j = sqrtRoot; j * j < N; j = j + factor) sqrtRoot = j;
   }
 
   return sqrtRoot;
 }
 
 // My Approach - little lengthy but I did it anyways
-double sqrtUsingBinarySearchWithPrecision2(long long int N, int precision)
-{
-  int sqrtRootIntegerPart = sqrtUsingBinarySearch(N);
+double sqrtUsingBinarySearchWithPrecision2(long long int N, int precision) {
+  int intPart = sqrtUsingBinarySearch(N);
 
   double factor = 1;
   double decimalValue = 1;
 
-  for (int i = 0; i < precision; ++i)
-  {
+  for (int i = 0; i < precision; ++i) {
     factor /= 10;
     decimalValue *= 10;
   }
 
-  double start = factor, end = 1 - factor, mid, ans = 0;
+  double s = factor, e = 1 - factor, mid, ans = 0;
 
-  while (start <= end)
-  {
-    // making the mid to precision only. suppose if it 0.1875 and precision is 3 then it would be 0.187
-    mid = (double)((int)((start + (end - start) / 2) * decimalValue)) / decimalValue;
+  while (s <= e) {
+    // making the mid to precision only. suppose if it 0.1875 and precision is 3
+    // then it would be 0.187
+    mid = (double)((int)((s + (e - s) / 2) * decimalValue)) / decimalValue;
 
-    long long int tempSqrt = (sqrtRootIntegerPart + mid) * (sqrtRootIntegerPart + mid);
+    long long int tempSqrt = (intPart + mid) * (intPart + mid);
 
-    if (tempSqrt < N)
-    {
+    if (tempSqrt < N) {
       ans = mid;
-      start = mid + factor;
-    }
-    else
-    {
-      end = mid - factor;
+      s = mid + factor;
+    } else {
+      e = mid - factor;
     }
   }
 
-  return sqrtRootIntegerPart + ans;
+  return intPart + ans;
 }
 
-double sqrtN(long long int N)
-{
+double sqrtN(long long int N) {
   return sqrtUsingBinarySearchWithPrecision(N, 3);
 }
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
   cout << sqrtUsingBinarySearchWithPrecision(27, 3) << endl;
   cout << sqrtUsingBinarySearchWithPrecision2(27, 3) << endl;
   return 0;
