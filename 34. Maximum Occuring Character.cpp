@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Approach 1
 char getMaxOccuringChar(string str) {
   vector<int> count(128, 0);
   for (const auto &i : str) count.at(i)++;
@@ -15,6 +16,13 @@ char getMaxOccuringChar(string str) {
     }
   }
   return ans;
+}
+
+// Approach 2
+char getMaxOccuringChar(string str) {
+  vector<int> count(26, 0);
+  for (const auto &i : str) count.at(tolower(i) - 'a')++;
+  return max_element(count.begin(), count.end()) - count.begin() + 'a';
 }
 
 int main(int argc, char const *argv[]) {

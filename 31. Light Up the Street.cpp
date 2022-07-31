@@ -42,17 +42,18 @@ int LightUptheStreet(int streetLength, int lightAvail, int range,
 }
 
 // Approach 2
-int LightUptheStreet2(int n, int m, int k, vector<int> Checkpoints) {
+int LightUptheStreet2(int streetLength, int m, int range, vector<int> cps) {
+  // gap between indices = value of ith + range + range + value of (i + 1)th
+
+  // max = previous cp cover range to right
+  // cp = last actual placed cp cover range to right
   int max = 0, cp = 0, ans = 0;
 
-  // gap between indices = value of ith + range + range + value of i + 1th
-
-  for (int i : Checkpoints) {
-    // for targeting the best next cp (if it is possible)
-    if (i - k - 1 > cp) {
+  for (const int &i : cps) {
+    if (i - range - 1 > cp) {
       // gap between the previous indices reachable range is higher than it
       // should be
-      if (i - k - 1 > max) {
+      if (i - range - 1 > max) {
         ans = -1;
         break;
       }
@@ -61,11 +62,11 @@ int LightUptheStreet2(int n, int m, int k, vector<int> Checkpoints) {
     }
 
     // ith indice's cover range
-    max = i + k;
+    max = i + range;
   }
 
-  if (cp < n) {
-    if (max < n)
+  if (cp < streetLength) {
+    if (max < streetLength)
       ans = -1;
     else
       ans++;

@@ -1,4 +1,4 @@
-// https://www.codingninjas.com/codestudio/contests/love-babbar-contest-ii/problems/14871
+// https://www.codingninjas.com/codestudio/contests/love-babbar-contest-ii/3583551/problems/14871
 
 #include <bits/stdc++.h>
 
@@ -14,12 +14,10 @@ vector<int> bitwiseAnd(int n, int q, vector<int> arr, vector<int> queries) {
 
   for (int i = 0; i < q; ++i) {
     tempAns = -1;
-
     start = 0, end = n - 1;
 
     while (start <= end) {
       mid = start + (end - start) / 2;
-
       if (arr.at(mid) >= queries[i]) {
         tempAns = mid;
         start = mid + 1;

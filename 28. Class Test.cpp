@@ -1,4 +1,4 @@
-// https://www.codingninjas.com/codestudio/contests/love-babbar-contest-ii/problems/14818
+// https://www.codingninjas.com/codestudio/contests/love-babbar-contest-ii/3583551/problems/14818
 
 #include <bits/stdc++.h>
 
