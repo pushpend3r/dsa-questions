@@ -1,4 +1,8 @@
-// https://practice.geeksforgeeks.org/problems/kth-element-in-matrix/1
+/*
+https://practice.geeksforgeeks.org/problems/kth-element-in-matrix/1
+-- or --
+https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
+*/
 
 #include <bits/stdc++.h>
 #define MAX 100
