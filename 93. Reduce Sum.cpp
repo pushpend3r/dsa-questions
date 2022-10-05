@@ -33,6 +33,20 @@ int countMinOp(int n, int m, vector<vector<int>> &mat) {
 }
 
 // Approach 2
+/*
+Suppose you have given 2 arrays A and B
+A   B   C(diff)
+3   2   1
+2   5   -3
+3   7   2
+----------
+8   9
+
+On ideal state A's element must be greater and equal to B's element
+In diff array,
+non negative elements (including zero) = means we can definetly keep those rows
+negative elements = they could be kept but need to check.
+*/
 int countMinOp(int n, int m, vector<vector<int>> &mat) {
   int ans = n;
   for (int col = 0; col < m - 1; ++col) {
