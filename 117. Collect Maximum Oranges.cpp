@@ -66,14 +66,3 @@ class Solution {
     return ans;
   }
 };
-
-int main(int argc, char const *argv[]) {
-  Solution *sol = new Solution();
-  for (auto i : sol->collectMaximumOranges(
-           5, 3, {{1, 2}, {3, 2}, {4, 5}, {7, 1}, {10, 4}},
-           {{0, 12}, {4, 6}, {2, 8}})) {
-    cout << i << " ";
-  }
-  cout << endl;
-  return 0;
-}
